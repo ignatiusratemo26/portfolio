@@ -101,10 +101,11 @@
 
 // export default Services;
 import React from 'react';
-import { Box, Typography, Grid2, Paper } from '@mui/material';
+import { Box, Typography, Grid2, Paper, useTheme, useMediaQuery } from '@mui/material';
 import { motion } from 'framer-motion'; // Install with `npm install framer-motion`
 
 const services = [
+  
   {
     title: "Web Development",
     description:
@@ -132,6 +133,9 @@ const services = [
 ];
 
 const Services = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <Box
       sx={{
@@ -147,7 +151,7 @@ const Services = () => {
       <Typography variant="body1" sx={{ mb: 6 }}>
         Here are the services that I provide
       </Typography>
-      <Grid2 container spacing={4}>
+      <Grid2 container spacing={4} justifyContent="center">
         {services.map((service, index) => (
           <Grid2
             item
@@ -192,7 +196,16 @@ const Services = () => {
               <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
                 {service.title}
               </Typography>
-              <Typography variant="body2">{service.description}</Typography>
+              <Box
+                  sx={{
+                    maxWidth: isMobile ? '100%' : '250px',
+                    mx: 'auto',
+                  }}
+                >
+                  <Typography variant="body2" color="text.secondary">
+                    {service.description}
+                  </Typography>
+                </Box>
             </Paper>
           </Grid2>
         ))}

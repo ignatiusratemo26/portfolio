@@ -6,6 +6,7 @@ import Services from './components/Services';
 import Blog from './components/Blog';
 import ClientSection from './components/ClientSection';
 import Newsletter from './components/Newsletter';
+import Portfolio from './components/Portfolio';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -51,6 +52,7 @@ if (!loading && typeof window === 'undefined') {
            <Hero />
            <Blog />
            <Services />
+           <Portfolio />
            <ClientSection />
            <Newsletter />
          </motion.div>
