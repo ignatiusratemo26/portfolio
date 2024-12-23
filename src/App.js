@@ -4,9 +4,11 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Blog from './components/Blog';
+import About from './components/About';
 import ClientSection from './components/ClientSection';
 import Newsletter from './components/Newsletter';
 import Portfolio from './components/Portfolio';
+import Footer from './components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -31,7 +33,11 @@ if (!loading && typeof window === 'undefined') {
 }
 
   return (
-   <Box>
+   <Box
+   sx={{
+    backgroundColor: 'background.paper',
+   }}
+   >
      <CssBaseline />
      <AnimatePresence>
        {loading ? (
@@ -50,11 +56,12 @@ if (!loading && typeof window === 'undefined') {
          >
            <Navbar />
            <Hero />
-           <Blog />
+           <About />
            <Services />
            <Portfolio />
            <ClientSection />
            <Newsletter />
+           <Footer />
          </motion.div>
        )}
      </AnimatePresence>

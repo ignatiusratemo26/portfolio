@@ -42,6 +42,7 @@ const Newsletter = () => {
        // background: 'linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(13, 71, 161, 0.2))',
        
         marginX:3,
+        marginY:1,
         py: 8,
         borderRadius: '16px',
         boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)',

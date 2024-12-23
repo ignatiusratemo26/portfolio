@@ -45,10 +45,10 @@ const ClientSection = () => {
   };
 
   return (
-    <section style={{ padding: "40px", backgroundColor: "#f0f8ff" }}>
+    <section style={{ padding: "40px", backgroundColor: 'background.paper' }}>
       <Box
         className="container"
-        sx={{ mx: "auto", px: { xs: 2, md: 4 }, maxWidth: "1000px" }}
+        sx={{ mx: "auto", px: { xs: 2, md: 4 }, maxWidth: "1000px",  }}
       >
         <Typography
           variant="h4"

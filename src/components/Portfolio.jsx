@@ -34,7 +34,7 @@ const Portfolio = () => {
       sx={{
         py: 6,
         px: 3,
-        background: "#f9f9f9",
+        backgroundColor: 'background.paper',
       }}
     >
       <Typography
