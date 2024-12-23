@@ -43,8 +43,8 @@ const Services = () => {
         backgroundColor: 'background.paper'
       }}
     >
-      <Typography variant="h4" fontWeight="bold" color="secondary" gutterBottom>
-        SERVICES
+      <Typography variant="h4" fontWeight="bold" color="primary" gutterBottom>
+        Services
       </Typography>
       <Typography variant="body1" sx={{ mb: 6 }}>
         Here are the services that I provide

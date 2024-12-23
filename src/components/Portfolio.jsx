@@ -41,6 +41,7 @@ const Portfolio = () => {
         variant="h4"
         fontWeight="bold"
         align="center"
+        color="primary"
         gutterBottom
         component={motion.div}
         initial={{ opacity: 0, y: -50 }}
@@ -59,7 +60,7 @@ const Portfolio = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        Check out some of the projects I’ve worked on!
+        Check out a few of the projects I’ve worked on!
       </Typography>
       <Grid2
         container

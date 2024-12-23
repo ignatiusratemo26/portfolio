@@ -45,7 +45,7 @@ const ClientSection = () => {
   };
 
   return (
-    <section style={{ padding: "40px", backgroundColor: 'background.paper' }}>
+    <section style={{ padding: "40px", backgroundColor: 'white' }}>
       <Box
         className="container"
         sx={{ mx: "auto", px: { xs: 2, md: 4 }, maxWidth: "1000px",  }}
@@ -55,6 +55,7 @@ const ClientSection = () => {
           fontWeight="bold"
           align="center"
           gutterBottom
+          color="primary"
           component={motion.div}
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -106,7 +106,7 @@ const About = () => {
            </motion.div>
          </Grid2>
           {/* Skills Section */}
-         <Grid2 item xs={12} md={6}>
+         <Grid2 item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
            <motion.div
              initial={{ opacity: 0, x: 50 }}
              whileInView={{ opacity: 1, x: 0 }}
@@ -119,6 +119,8 @@ const About = () => {
                  borderRadius: '16px',
                  background: 'rgba(255, 255, 255, 0.9)',
                  backdropFilter: 'blur(10px)',
+                 width: '100%',
+                mx: 'auto', 
                }}
              >
                <Typography

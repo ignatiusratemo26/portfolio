@@ -2,10 +2,8 @@ import React from 'react';
 import { Box, Container, Grid2, Typography, IconButton, Link } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import EmailIcon from '@mui/icons-material/Email';
 import { motion } from 'framer-motion';
-import Services from './Services';
 const Footer = () => {
  const currentYear = new Date().getFullYear();
   return (
@@ -70,14 +68,14 @@ const Footer = () => {
                </IconButton>
                <IconButton
                  component={Link}
-                 href="https://linkedin.com/in/yourusername"
+                 href="https://www.linkedin.com/in/ignatius-ratemo-809aa4341/"
                  target="_blank"
                  rel="noopener noreferrer"
                  color="primary"
                >
                  <LinkedInIcon />
                </IconButton>
-               <IconButton
+               {/* <IconButton
                  component={Link}
                  href="https://twitter.com/yourusername"
                  target="_blank"
@@ -85,10 +83,10 @@ const Footer = () => {
                  color="primary"
                >
                  <TwitterIcon />
-               </IconButton>
+               </IconButton> */}
                <IconButton
                  component={Link}
-                 href="mailto:your.email@example.com"
+                 href="mailto:ignatiusratemo5@gmail.com"
                  color="primary"
                >
                  <EmailIcon />

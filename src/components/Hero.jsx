@@ -121,6 +121,7 @@ const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <Button
+                  href="#portfolio"
                   variant="contained"
                   color="primary"
                   size="large"

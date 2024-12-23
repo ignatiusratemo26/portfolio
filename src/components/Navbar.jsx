@@ -14,6 +14,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import WorkIcon from '@mui/icons-material/Work';
 import EmailIcon from '@mui/icons-material/Email';
 import { styled } from '@mui/material/styles';
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 
 const MenuButton = styled(IconButton)(({ theme }) => ({
   position: 'fixed',
@@ -28,14 +29,29 @@ const MenuButton = styled(IconButton)(({ theme }) => ({
 }));
 
 const menuItems = [
-  { text: 'Home', icon: <HomeIcon />, path: '/' },
-  { text: 'About', icon: <PersonIcon />, path: '/about' },
-  { text: 'Portfolio', icon: <WorkIcon />, path: '/portfolio' },
-  { text: 'Contact', icon: <EmailIcon />, path: '/contact' },
+  { text: 'Home', icon: <HomeIcon />, path: '#home' },
+  { text: 'About', icon: <PersonIcon />, path: '#about' },
+  { text: 'Services', icon: <MiscellaneousServicesIcon />, path: '#services' },
+  { text: 'Portfolio', icon: <WorkIcon />, path: '#portfolio' },
+  { text: 'Contact', icon: <EmailIcon />, path: '#contact' },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80; // Adjust this value based on your navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+       window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsOpen(false);
+  };
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -79,7 +95,7 @@ const Navbar = () => {
               <ListItem
                 button
                 key={item.text}
-                onClick={toggleDrawer(false)}
+                onClick={() => scrollToSection(item.path.replace('#', ''))}
                 sx={{
                   '&:hover': {
                     backgroundColor: 'primary.light',

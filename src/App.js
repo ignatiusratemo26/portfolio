@@ -3,12 +3,12 @@ import { Box, CssBaseline } from '@mui/material';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
-import Blog from './components/Blog';
 import About from './components/About';
 import ClientSection from './components/ClientSection';
 import Newsletter from './components/Newsletter';
 import Portfolio from './components/Portfolio';
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
@@ -55,13 +55,28 @@ if (!loading && typeof window === 'undefined') {
            transition={{ duration: 0.5 }}
          >
            <Navbar />
+           <div id="home">
            <Hero />
+          </div>
+          <div id="about">
            <About />
+          </div>
+          <div id="services">
            <Services />
+          </div>
+          <div id="portfolio">
            <Portfolio />
-           <ClientSection />
-           <Newsletter />
-           <Footer />
+           <div id="newsletter">
+            <Newsletter />
+           </div>
+           <div id="testimonials">
+            <ClientSection />
+           </div>
+          </div>
+          <div id="contact">
+           <Contact />
+         </div>
+         <Footer />
          </motion.div>
        )}
      </AnimatePresence>
