@@ -6,8 +6,8 @@ import ncapc_project from "../images/projects/ncapc_project.png";
 const projects = [
   {
     title: "NCA Project Commissioning System",
-    description: "This is a short description of Project One. It showcases amazing features and solves a real-world problem.",
-    githubLink: "https://github.com/username/project-one",
+    description: "Project Commissioning System for the National Construction Authority (NCA), a comprehensive platform that streamlines project management, document approval workflows, and stakeholder collaboration.",
+    githubLink: "https://github.com/ignatiusratemo26/project_commissioning",
     liveLink: "https://ncapc.vercel.app/",
     image: ncapc_project,
   },
@@ -114,10 +114,18 @@ const Portfolio = () => {
                 >
                   {project.title}
                 </Typography>
+
                 <Typography
                   variant="body2"
                   color="text.secondary"
-                  sx={{ mb: 2 }}
+                  sx={{
+                    mb: 2,
+                    maxWidth: '500px', // Set a maximum height for the description
+                    overflowY: 'hidden', // Hide overflow text vertically
+                    display: '-webkit-box',
+                    WebkitLineClamp: '5', // Limit to 5 lines
+                    WebkitBoxOrient: 'vertical',
+                  }}
                 >
                   {project.description}
                 </Typography>

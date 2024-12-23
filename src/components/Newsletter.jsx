@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { 
+import {
   Box,
   Container,
   Typography,
@@ -27,9 +27,24 @@ const Newsletter = () => {
   return (
     <Box
       sx={{
-        bgcolor: 'primary.main',
+      // background: 'linear-gradient(135deg, #E3F2FD, #90CAF9)',
+       
+       // Option 2: More vibrant blue gradient
+      //  background: 'linear-gradient(135deg, #4FC3F7, #2196F3)',
+       
+       // Option 3: Soft blue to white gradient
+       background: 'linear-gradient(135deg, #BBDEFB, #ffffff)',
+       
+       // Option 4: Modern tech-style gradient
+       // background: 'linear-gradient(135deg, #64B5F6, #42A5F5, #2196F3)',
+       
+       // Option 5: Subtle blue gradient with opacity
+       // background: 'linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(13, 71, 161, 0.2))',
+       
+        marginX:3,
         py: 8,
-        color: 'white',
+        borderRadius: '16px',
+        boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)',
       }}
     >
       <Container maxWidth="lg">
@@ -44,6 +59,7 @@ const Newsletter = () => {
                 <Typography
                   variant="h3"
                   component="h2"
+                  color="primary.main"
                   gutterBottom
                   sx={{
                     fontWeight: 'bold',
@@ -52,7 +68,11 @@ const Newsletter = () => {
                 >
                   Stay Updated
                 </Typography>
-                <Typography variant="h6" sx={{ opacity: 0.9 }}>
+                <Typography variant="h6" 
+                sx={{ opacity: 0.9,
+                  color: 'black'
+
+                 }}>
                   Subscribe to my newsletter for the latest updates and insights
                 </Typography>
               </Box>
@@ -67,7 +87,13 @@ const Newsletter = () => {
                   gap: 1,
                   maxWidth: 500,
                   bgcolor: 'background.paper',
-                  borderRadius: 2,
+                  borderRadius: '8px',
+                  boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+                  transition: 'transform 0.3s ease-in-out',
+                  '&:hover': {
+                    transform: 'scale(1.02)',
+                    boxShadow: '0px 8px 30px rgba(0, 0, 0, 0.3)',
+                  },
                 }}
               >
                 <TextField
@@ -83,19 +109,29 @@ const Newsletter = () => {
                       '& fieldset': { border: 'none' },
                     },
                     flex: 1,
+                    bgcolor: '#ffffff',
+                    borderRadius: '4px',
+                    '& input': {
+                      paddingLeft: '16px',
+                    },
                   }}
                 />
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  bgcolor="primary"
                   endIcon={<SendIcon />}
                   sx={{
                     px: 3,
                     py: 1.5,
-                    borderRadius: 1,
+                    borderRadius: '4px',
                     whiteSpace: 'nowrap',
                     minWidth: isMobile ? '100%' : 'auto',
+                    bgcolor: 'primary.main', // Custom button color
+                    '&:hover': {
+                      bgcolor: 'primary.light', // Lighter shade on hover
+                      boxShadow: '0px 4px 15px rgba(255,64,129,0.3)',
+                    },
                   }}
                 >
                   Subscribe
@@ -103,7 +139,6 @@ const Newsletter = () => {
               </Paper>
             </motion.div>
           </Grid2>
-
         </Grid2>
       </Container>
     </Box>

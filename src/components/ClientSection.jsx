@@ -1,104 +1,161 @@
-import { useState } from 'react';
-import { Paper, IconButton } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { useState } from "react";
+import { Paper, IconButton, Box, Typography } from "@mui/material";
+import { motion, AnimatePresence } from "framer-motion";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import clients from "../images/clients.png";
+import clients_bg from "../images/client-bg.jpg";
 
 const testimonials = [
- {
-   id: 1,
-   content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-   author: "Pete Rock",
-   company: "A New Tomorrow"
- },
- {
-   id: 2,
-   content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-   author: "Michael Snowden",
-   company: "Creativeland CEO"
- },
- {
-   id: 3,
-   content: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-   author: "Tom Davis",
-   company: "GreenWonder"
- }
+  {
+    id: 1,
+    content:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    author: "Gabriel Eyuren",
+    company: "Ndula Kicks™ CEO",
+    image: "https://via.placeholder.com/100", // Replace with profile image
+  },
+  {
+    id: 2,
+    content:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    author: "Michael Snowden",
+    company: "Creativeland CEO",
+    image: "https://via.placeholder.com/100", // Replace with profile image
+  },
+  {
+    id: 3,
+    content:
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    author: "Tom Davis",
+    company: "GreenWonder",
+    image: "https://via.placeholder.com/100", // Replace with profile image
+  },
 ];
 
 const ClientSection = () => {
- const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
   const nextTestimonial = () => {
-   setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
- };
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
   const prevTestimonial = () => {
-   setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
- };
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
-   <section className="py-20 bg-white">
-     <div className="container mx-auto px-4">
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-         <motion.div
-           initial={{ opacity: 0, x: -50 }}
-           whileInView={{ opacity: 1, x: 0 }}
-           transition={{ duration: 0.5 }}
-           className="relative"
-         >
-           <img 
-             src="/img/clients.png" 
-             alt="Clients" 
-             className="w-full h-auto rounded-lg shadow-lg"
-           />
-         </motion.div>
-          <div className="relative">
-           <motion.h2
-             initial={{ opacity: 0, y: -20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.5 }}
-             className="text-3xl font-bold mb-8"
-           >
-             What our clients said
-           </motion.h2>
-            <div className="relative h-64">
-             <AnimatePresence mode="wait">
-               <motion.div
-                 key={currentTestimonial}
-                 initial={{ opacity: 0, x: 50 }}
-                 animate={{ opacity: 1, x: 0 }}
-                 exit={{ opacity: 0, x: -50 }}
-                 transition={{ duration: 0.5 }}
-               >
-                 <Paper elevation={3} className="p-6 bg-light">
-                   <p className="text-lg mb-4 text-gray-700">
-                     {testimonials[currentTestimonial].content}
-                   </p>
-                   <div className="font-semibold text-primary">
-                     {testimonials[currentTestimonial].author}
-                   </div>
-                   <div className="text-sm text-gray-500">
-                     {testimonials[currentTestimonial].company}
-                   </div>
-                 </Paper>
-               </motion.div>
-             </AnimatePresence>
-           </div>
-            <div className="flex justify-end mt-4 gap-2">
-             <IconButton 
-               onClick={prevTestimonial}
-               className="text-primary hover:bg-primary/10"
-             >
-               <ChevronLeftIcon />
-             </IconButton>
-             <IconButton 
-               onClick={nextTestimonial}
-               className="text-primary hover:bg-primary/10"
-             >
-               <ChevronRightIcon />
-             </IconButton>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
- );
+    <section style={{ padding: "40px", backgroundColor: "#f0f8ff" }}>
+      <Box
+        className="container"
+        sx={{ mx: "auto", px: { xs: 2, md: 4 }, maxWidth: "1000px" }}
+      >
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          align="center"
+          gutterBottom
+          component={motion.div}
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Client Testimonials
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            alignItems: "center",
+            gap: 4,
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <img
+              src={clients}
+              alt="Clients"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "8px",
+                boxShadow: "0px 4px 8px rgba(0,0,0,0.1)",
+              }}
+            />
+          </motion.div>
+          <Box>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentTestimonial}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Paper
+                  elevation={3}
+                  sx={{
+                    position: "relative",
+                    p: 4,
+                    textAlign: "center",
+                    borderRadius: "16px",
+                    backgroundImage: clients_bg,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    boxShadow: "0px 10px 20px rgba(0,0,0,0.1)",
+                    overflow: "hidden",
+                  }}
+                >
+                  
+
+                  {/* Testimonial Content */}
+                  <Typography
+                    variant="body1"
+                    sx={{ mb: 2, fontStyle: "italic",
+                    zIndex: 1,
+                     }}
+                  >
+                    {testimonials[currentTestimonial].content}
+                  </Typography>
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    {testimonials[currentTestimonial].author}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {testimonials[currentTestimonial].company}
+                  </Typography>
+                </Paper>
+              </motion.div>
+            </AnimatePresence>
+            {/* Navigation Buttons */}
+            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+              <IconButton
+                onClick={prevTestimonial}
+                sx={{
+                  color: "primary.main",
+                  "&:hover": { backgroundColor: "rgba(25,118,210,0.08)" },
+                }}
+              >
+                <ChevronLeftIcon />
+              </IconButton>
+              <IconButton
+                onClick={nextTestimonial}
+                sx={{
+                  color: "primary.main",
+                  "&:hover": { backgroundColor: "rgba(25,118,210,0.08)" },
+                }}
+              >
+                <ChevronRightIcon />
+              </IconButton>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </section>
+  );
 };
+
 export default ClientSection;

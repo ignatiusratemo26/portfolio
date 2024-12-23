@@ -125,7 +125,7 @@ const services = [
     icon: "💻",
   },
   {
-    title: "Database Development & Design",
+    title: "Database Development",
     description:
       "I have a strong foundation in database design and architecture, enabling me to create efficient and scalable database solutions. My expertise includes normalization, indexing, and query optimization.",
     icon: "🛢️",
