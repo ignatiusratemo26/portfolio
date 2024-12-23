@@ -2,19 +2,33 @@ import { useState, useEffect } from 'react';
 import { Box, CssBaseline } from '@mui/material';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Services from './components/Services';
 import Blog from './components/Blog';
 import ClientSection from './components/ClientSection';
 import Newsletter from './components/Newsletter';
 import { motion, AnimatePresence } from 'framer-motion';
+
 function App() {
  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-   // Simulating preloader
-   const timer = setTimeout(() => {
-     setLoading(false);
-   }, 1000);
-   return () => clearTimeout(timer);
- }, []);
+ useEffect(() => {
+  // Add error handling to the loading state
+  try {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  } catch (error) {
+    console.error('Loading error:', error);
+    setLoading(false); // Ensure loading state is cleared even if there's an error
+  }
+}, []);
+ // Add error boundary wrapper
+if (!loading && typeof window === 'undefined') {
+  return null; // Prevent rendering during SSR
+}
+
   return (
    <Box>
      <CssBaseline />
@@ -36,6 +50,7 @@ function App() {
            <Navbar />
            <Hero />
            <Blog />
+           <Services />
            <ClientSection />
            <Newsletter />
          </motion.div>
