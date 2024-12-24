@@ -6,6 +6,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import emailjs from '@emailjs/browser';
 
+emailjs.init(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+
 const Contact = () => {
  const [formData, setFormData] = useState({
    name: '',
@@ -22,6 +24,8 @@ const Contact = () => {
     e.preventDefault();
     
     try {
+      console.log(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -29,10 +33,9 @@ const Contact = () => {
         to_name: 'Ignatius Ratemo',
       };
        await emailjs.send(
-        'MY_SERVICE_ID',  // Replace with  EmailJS service ID
-        'MY_TEMPLATE_ID', // Replace with your EmailJS template ID
-        templateParams,
-        'MY_PUBLIC_KEY'   // Replace with your EmailJS public key
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        templateParams
       );
        // Clear form after successful submission
       setFormData({

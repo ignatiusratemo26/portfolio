@@ -11,7 +11,7 @@ const testimonials = [
     id: 1,
     content:
       "Working with Ignatius has been a game-changer for our business. His expertise in web development and software engineering is evident in every project he completed for us. The new website he built has not only improved our online presence but also increased our sales by 30%. I highly recommend Ignatius for any web development needs.",
-    author: "Gabriel Eyuren",
+    author: "Gabriel",
     company: "Ndula Kicks™ CEO",
     image: "https://via.placeholder.com/100", 
   },
@@ -35,12 +35,30 @@ const testimonials = [
 
 const ClientSection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [dragDirection, setDragDirection] = useState(0);
+
+  const handleDragEnd = (event, info) => {
+    const swipeThreshold = 50; // minimum distance for swipe
+    const dragDistance = info.offset.x;
+
+    if (Math.abs(dragDistance) > swipeThreshold) {
+      if (dragDistance > 0) {
+        // Swiped right
+        prevTestimonial();
+      } else {
+        // Swiped left
+        nextTestimonial();
+      }
+    }
+  };
 
   const nextTestimonial = () => {
+    setDragDirection(-1);
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   };
 
   const prevTestimonial = () => {
+    setDragDirection(1);
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
@@ -94,13 +112,18 @@ const ClientSection = () => {
             </video>
           </motion.div>
           <Box>
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={currentTestimonial}
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: dragDirection > 0 ? -300 : 300 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
+                exit={{ opacity: 0, x: dragDirection > 0 ? 300 : -300 }}
                 transition={{ duration: 0.5 }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={handleDragEnd}
+                whileTap={{ cursor: "grabbing" }}
               >
                 <Paper
                   elevation={3}
@@ -115,6 +138,9 @@ const ClientSection = () => {
                     backgroundRepeat: "no-repeat",
                     boxShadow: "0px 10px 20px rgba(0,0,0,0.1)",
                     overflow: "hidden",
+                    mx:"auto",
+                    cursor:"grab",
+                    touchAction:"none",
                   }}
                 >
                   
