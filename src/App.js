@@ -66,9 +66,9 @@ if (!loading && typeof window === 'undefined') {
           </div>
           <div id="portfolio">
            <Portfolio />
-           <div id="newsletter">
+           {/* <div id="newsletter">
             <Newsletter />
-           </div>
+           </div> */}
            <div id="testimonials">
             <ClientSection />
            </div>

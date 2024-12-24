@@ -1,8 +1,13 @@
-import React from "react";
-import { Box, Typography, Grid2, Card, CardMedia, CardContent, CardActions, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, Grid2, Card, CardMedia, CardContent, CardActions, Button ,Dialog,  DialogTitle,  DialogContent,  DialogActions } from "@mui/material";
 import { motion } from "framer-motion";
 import ncapc_project from "../images/projects/ncapc_project.png";
-// Example project data
+import baybook_project from "../images/projects/baybook_project.png";
+import ndula_project from "../images/projects/ndula_project.png";
+import la_crime_project from "../images/projects/crime_analysis_project.png";
+import sleep_scope_project from "../images/projects/sleepscope_project.png";
+
+
 const projects = [
   {
     title: "NCA Project Commissioning System",
@@ -12,22 +17,48 @@ const projects = [
     image: ncapc_project,
   },
   {
-    title: "Project Two",
-    description: "This is a short description of Project Two. A powerful tool for productivity and efficiency.",
-    githubLink: "https://github.com/username/project-two",
-    liveLink: "https://projecttwo.example.com",
-    image: ncapc_project, 
+    title: "BayBook Hotel Booking",
+    description: "BayBook is a user-friendly hotel booking platform designed to simplify travel planning. It allows users to explore, compare, and book accommodations effortlessly, featuring detailed listings, photos, and amenities.",
+    githubLink: "https://github.com/ignatiusratemo26/baybook_frontend",
+    liveLink: "under development",
+    image: baybook_project,
   },
   {
-    title: "Project Three",
-    description: "Project Three is a creative solution designed to enhance user experience and engagement.",
-    githubLink: "https://github.com/username/project-three",
-    liveLink: "https://projectthree.example.com",
-    image: "https://via.placeholder.com/300x200", // Replace with your image URL
+    title: "Ndula Kicks™",
+    description: "Ndula Kicks™ is a platform that allows users to buy and sell sneakers. It allows users to explore, compare, and buy sneakers effortlessly, featuring detailed listings and photos.",
+    githubLink: "https://github.com/ignatiusratemo26/ndula_ke",
+    liveLink: "under development",
+    image: ndula_project,
+  },
+  {
+    title: "LA Crime Data Analysis",
+    description: "LA Crime Data Analysis Workbook using Python and Jupyter Notebook. Analysis of crime data to identify patterns in criminal behavior. The insights were to determine the most effective way to allocate resources effectively to tackle various crimes in different areas.",
+    githubLink: "https://github.com/ignatiusratemo26/Crime-Data-Analysis",
+    liveLink: "https://github.com/ignatiusratemo26/Crime-Data-Analysis/blob/main/data/notebook.ipynb",
+    image: la_crime_project,
+  },
+  {
+    title: "SleepScope Data Analysis",
+    description: "Data science project aimed at uncovering insights into sleep quality based on various lifestyle and demographic factors. The analysis was performed using a dataset provided by SleepInc, featuring anonymized sleep and lifestyle metrics for 374 individuals over the past six months.",
+    githubLink: "https://github.com/ignatiusratemo26/sleep-tracking",
+    liveLink: "https://github.com/ignatiusratemo26/sleep-tracking/blob/master/notebook.ipynb",
+    image: sleep_scope_project,
   },
 ];
 
 const Portfolio = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const handleLiveLinkClick = (project) => {
+    if (project.liveLink === "under development") {
+      setSelectedProject(project);
+      setOpenDialog(true);
+    } else {
+      window.open(project.liveLink, '_blank');
+    }
+  };
+
   return (
     <Box
       id="portfolio"
@@ -60,7 +91,7 @@ const Portfolio = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        Check out a few of the projects I’ve worked on!
+        Check out some of the projects I’ve worked on!
       </Typography>
       <Grid2
         container
@@ -101,7 +132,7 @@ const Portfolio = () => {
                 image={project.image}
                 alt={`${project.title} image`}
                 sx={{
-                  height: 200, // Adjust height as needed
+                  height: 200,
                   objectFit: "cover",
                 }}
               />
@@ -144,18 +175,40 @@ const Portfolio = () => {
                     GitHub
                   </Button>
                 )}
-                {project.liveLink && (
+
                   <Button
                     size="small"
                     variant="outlined"
                     color="primary"
-                    href={project.liveLink}
+                    onClick={() => handleLiveLinkClick(project)}
                     target="_blank"
                   >
                     Live Site
                   </Button>
-                )}
+                
               </CardActions>
+              {/* {dialog for under development projects} */}
+              <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
+                <DialogTitle>Project Under Development</DialogTitle>
+                <DialogContent>
+                  This project is currently under development. You can check out the progress on GitHub.
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={() => setOpenDialog(false)} color="primary">
+                    Close
+                  </Button>
+                  {selectedProject && (
+                    <Button 
+                      href={selectedProject.githubLink} 
+                      target="_blank" 
+                      color="primary" 
+                      variant="contained"
+                    >
+                      View on GitHub
+                    </Button>
+                  )}
+                </DialogActions>
+              </Dialog>
             </Card>
           </Grid2>
         ))}

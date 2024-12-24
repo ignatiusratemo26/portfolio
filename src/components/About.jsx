@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Container, Grid2, Typography, Button, Paper, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { motion } from 'framer-motion';
 import CodeIcon from '@mui/icons-material/Code';
-import StorageIcon from '@mui/icons-material/Storage';
 import ArchitectureIcon from '@mui/icons-material/Architecture';
 import CloudIcon from '@mui/icons-material/Cloud';
 import BarChartIcon from '@mui/icons-material/BarChart';
@@ -45,6 +44,8 @@ const About = () => {
         py: 8,
         background: 'linear-gradient(135deg, #E3F2FD 0%, #FFFFFF 100%)',
         minHeight: '100vh',
+        borderRadius: '16px',
+        margin: '12px',
         }}
     >
      <Container maxWidth="lg">

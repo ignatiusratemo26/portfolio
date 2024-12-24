@@ -35,30 +35,73 @@ const Hero = () => {
           container 
           spacing={4} 
           alignItems="center"
-          direction={isMobile ? 'column' : 'row'}
+          // direction={isMobile ? 'column' : 'row'}
+          direction={{ xs: 'column-reverse', md: 'row' }}
         >
           {/* Profile Image */}
+          
           <Grid2 item xs={12} md={5}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
+            <Box
+              sx={{
+                position: 'relative',
+                width: 'fit-content',
+                mx: 'auto',
+              }}
             >
+              <motion.div
+                animate={{ 
+                  y: [0, -20, 0] // Reduced movement range
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <Box
+                  component="img"
+                  src={ProfilePic}
+                  alt="Ignatius Ratemo"
+                  sx={{
+                    width: { xs: '200px', md: '300px' },
+                    height: { xs: '200px', md: '300px' },
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    display: 'block',
+                    boxShadow: 3,
+                    imageRendering: 'crisp-edges',  // Add this
+                    WebkitBackfaceVisibility: 'hidden',  // Add this
+                    backfaceVisibility: 'hidden',  // Add this
+                    filter: 'none', 
+                  }}
+                />
+              </motion.div>
+              {/* Shadow */}
               <Box
-                component="img"
-                src={ProfilePic}
-                alt="Ignatius Ratemo"
                 sx={{
-                  width: isMobile ? '200px' : '300px',
-                  height: isMobile ? '200px' : '300px',
+                  position: 'absolute',
+                  bottom: -40,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '90%',
+                  height: '20px',
                   borderRadius: '50%',
-                  objectFit: 'cover',
-                  mx: 'auto',
-                  display: 'block',
-                  boxShadow: 3,
+                  backgroundColor: 'rgba(0,0,0,0.2)',
+                  filter: 'blur(8px)',
+                  animation: 'shadowPulse 3s infinite ease-in-out',
                 }}
               />
-            </motion.div>
+            </Box>
+
+            {/* Add animation keyframes */}
+            <style>
+              {`
+                @keyframes shadowPulse {
+                  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+                  50% { transform: translateX(-50%) scale(0.8); opacity: 0.6; }
+                }
+              `}
+            </style>
           </Grid2>
 
           {/* Content */}
@@ -110,7 +153,7 @@ const Hero = () => {
                   paragraph
                   sx={{ color: 'text.secondary' }}
                 >
-                  Passionate about creating innovative solutions and turning data into insights. 
+                  Passionate about creating innovative solutions. 
                   Let's build something amazing together!
                 </Typography>
               </motion.div>

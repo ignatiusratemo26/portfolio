@@ -3,8 +3,8 @@ import { Paper, IconButton, Box, Typography } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import clients from "../images/clients.png";
 import clients_bg from "../images/client-bg.jpg";
+import client_video from "../images/client_vid.mp4";
 
 const testimonials = [
   {
@@ -76,16 +76,22 @@ const ClientSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <img
-              src={clients}
-              alt="Clients"
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
               style={{
                 width: "100%",
                 height: "auto",
                 borderRadius: "8px",
                 boxShadow: "0px 4px 8px rgba(0,0,0,0.1)",
+                objectFit: "cover"
               }}
-            />
+            >
+              <source src={client_video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </motion.div>
           <Box>
             <AnimatePresence mode="wait">
