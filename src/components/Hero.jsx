@@ -164,7 +164,16 @@ const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <Button
-                  href="#portfolio"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const portfolioSection = document.getElementById('portfolio');
+                    if (portfolioSection) {
+                      portfolioSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                      });
+                    }
+                  }}
                   variant="contained"
                   color="primary"
                   size="large"
@@ -173,6 +182,12 @@ const Hero = () => {
                     borderRadius: 2,
                     px: 4,
                     py: 1.5,
+                    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+                    boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      transition: 'transform 0.2s ease-in-out',
+                    },
                   }}
                 >
                   View My Work

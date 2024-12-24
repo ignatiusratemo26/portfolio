@@ -188,10 +188,36 @@ const Portfolio = () => {
                 
               </CardActions>
               {/* {dialog for under development projects} */}
-              <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-                <DialogTitle>Project Under Development</DialogTitle>
+              <Dialog 
+                open={openDialog} 
+                onClose={() => setOpenDialog(false)}
+                PaperProps={{
+                  sx: {
+                    borderRadius: 2,
+                    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                    backdropFilter: 'blur(8px)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                  }
+                }}
+                BackdropProps={{
+                  sx: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    backdropFilter: 'blur(8px)',
+                  }
+                }}
+                sx={{
+                  '& .MuiDialog-paper': {
+                    margin: 2,
+                  }
+                }}
+              >
+                <DialogTitle sx={{ pb: 1 }}>
+                  Site To Be Deployed
+                </DialogTitle>
                 <DialogContent>
-                  This project is currently under development. You can check out the progress on GitHub.
+                  <Typography>
+                    This site has not yet been deployed. You can check it out on GitHub.
+                  </Typography>
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={() => setOpenDialog(false)} color="primary">
