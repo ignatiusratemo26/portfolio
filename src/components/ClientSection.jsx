@@ -10,26 +10,26 @@ const testimonials = [
   {
     id: 1,
     content:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+      "Working with Ignatius has been a game-changer for our business. His expertise in web development and software engineering is evident in every project he completed for us. The new website he built has not only improved our online presence but also increased our sales by 30%. I highly recommend Ignatius for any web development needs.",
     author: "Gabriel Eyuren",
     company: "Ndula Kicks™ CEO",
-    image: "https://via.placeholder.com/100", // Replace with profile image
+    image: "https://via.placeholder.com/100", 
   },
   {
     id: 2,
     content:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    author: "Michael Snowden",
-    company: "Creativeland CEO",
-    image: "https://via.placeholder.com/100", // Replace with profile image
+      "Collaborating with Ignatius on the Project Commissioning System for the National Construction Authority was a fantastic experience. He created a comprehensive platform that seamlessly streamlines project management, document approval workflows, and stakeholder collaboration. His expertise and dedication to delivering high-quality solutions exceeded our expectations.",
+    author: "Karen",
+    company: "Project Manager",
+    image: "https://via.placeholder.com/100",
   },
   {
     id: 3,
     content:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-    author: "Tom Davis",
-    company: "GreenWonder",
-    image: "https://via.placeholder.com/100", // Replace with profile image
+      "Collaborating with Ignatius on our data science project was an incredible learning experience. He guided our analysis of sleep quality based on lifestyle and demographic factors using a dataset from SleepInc. His insights and expertise were invaluable in uncovering meaningful trends and patterns.",
+    author: "Peter Mwenda",
+    company: "Student, Software Engineer",
+    image: "https://via.placeholder.com/100",
   },
 ];
 
@@ -124,6 +124,8 @@ const ClientSection = () => {
                     variant="body1"
                     sx={{ mb: 2, fontStyle: "italic",
                     zIndex: 1,
+                    maxWidth: "700px",
+                    
                      }}
                   >
                     {testimonials[currentTestimonial].content}

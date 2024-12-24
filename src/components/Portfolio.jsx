@@ -109,6 +109,7 @@ const Portfolio = () => {
             component={motion.div}
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05 }} 
             transition={{
               delay: 0.2 * index,
               duration: 0.8,
@@ -126,16 +127,15 @@ const Portfolio = () => {
                 boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)",
               }}
             >
-              {/* Project Image */}
-              <CardMedia
-                component="img"
-                image={project.image}
-                alt={`${project.title} image`}
-                sx={{
-                  height: 200,
-                  objectFit: "cover",
-                }}
-              />
+                <CardMedia
+                  component="img"
+                  image={project.image}
+                  alt={`${project.title} image`}
+                  sx={{
+                    height: 200,
+                    objectFit: "cover",
+                  }}
+                />
               {/* Project Content */}
               <CardContent>
                 <Typography
