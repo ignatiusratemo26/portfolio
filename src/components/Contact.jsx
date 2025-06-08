@@ -198,7 +198,7 @@ const Contact = () => {
                    <Box sx={{ display: 'flex', gap: 2 }}>
                      <motion.div whileHover={{ scale: 1.2 }}>
                        <IconButton
-                         href="https://www.linkedin.com/in/ignatius-ratemo-809aa4341/"
+                         href="https://www.linkedin.com/in/siko-ignatius-8a3a8934b/"
                          target="_blank"
                          rel="noopener noreferrer"
                          sx={{ color: '#0077B5' }}
