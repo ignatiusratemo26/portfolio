@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 import { Box, Typography, Grid2, Card, CardMedia, CardContent, CardActions, Button ,Dialog,  DialogTitle,  DialogContent,  DialogActions } from "@mui/material";
 import { motion } from "framer-motion";
-import ncapc_project from "../images/projects/ncapc_project.png";
+import xamara from "../images/projects/xamara.png";
 import baybook_project from "../images/projects/baybook_project.png";
 import ndula_project from "../images/projects/ndula_project.png";
 import la_crime_project from "../images/projects/crime_analysis_project.png";
 import sleep_scope_project from "../images/projects/sleepscope_project.png";
-
-
+import ncapc_project from "../images/projects/ncapc_project.png";
+import agrilink from "../images/projects/agrilink.png";
 const projects = [
+    {
+    title: "Xamara Technologies",
+    description: "Xamara Technologies is a startup dealing with professional website development and software application development. I built the business portfolio to expose the brand to a wide target.",
+    githubLink: "not public",
+    liveLink: "https://xamaratech.com/",
+    image: xamara,
+  },
+  {
+    title: "Agrilink",
+    description: "AgriLink helps farmers increase yields with AI-powered crop recommendations, direct market access, and a supportive community of agricultural experts.",
+    githubLink: "not public",
+    liveLink: "https://agrilink-frontend.vercel.app/",
+    image: agrilink,
+  },
   {
     title: "NCA Project Commissioning System",
     description: "Project Commissioning System for the National Construction Authority (NCA), a comprehensive platform that streamlines project management, document approval workflows, and stakeholder collaboration.",
@@ -49,13 +63,21 @@ const projects = [
 const Portfolio = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
-
   const handleLiveLinkClick = (project) => {
     if (project.liveLink === "under development") {
       setSelectedProject(project);
       setOpenDialog(true);
     } else {
       window.open(project.liveLink, '_blank');
+    }
+  };
+
+  const handleGitHubClick = (project) => {
+    if (project.githubLink === "not public") {
+      setSelectedProject(project);
+      setOpenDialog(true);
+    } else {
+      window.open(project.githubLink, '_blank');
     }
   };
 
@@ -134,6 +156,8 @@ const Portfolio = () => {
                   sx={{
                     height: 200,
                     objectFit: "cover",
+                    objectPosition: "center",
+                    width: "100%",
                   }}
                 />
               {/* Project Content */}
@@ -161,34 +185,27 @@ const Portfolio = () => {
                 >
                   {project.description}
                 </Typography>
-              </CardContent>
-              {/* Project Actions */}
+              </CardContent>              {/* Project Actions */}
               <CardActions sx={{ justifyContent: "space-between", px: 2 }}>
-                {project.githubLink && (
-                  <Button
-                    size="small"
-                    variant="contained"
-                    color="primary"
-                    href={project.githubLink}
-                    target="_blank"
-                  >
-                    GitHub
-                  </Button>
-                )}
+                <Button
+                  size="small"
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleGitHubClick(project)}
+                >
+                  GitHub
+                </Button>
 
-                  <Button
-                    size="small"
-                    variant="outlined"
-                    color="primary"
-                    onClick={() => handleLiveLinkClick(project)}
-                    target="_blank"
-                  >
-                    Live Site
-                  </Button>
-                
+                <Button
+                  size="small"
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => handleLiveLinkClick(project)}
+                >
+                  Live Site
+                </Button>
               </CardActions>
-              {/* {dialog for under development projects} */}
-              <Dialog 
+              {/* {dialog for under development projects} */}              <Dialog 
                 open={openDialog} 
                 onClose={() => setOpenDialog(false)}
                 PaperProps={{
@@ -212,18 +229,22 @@ const Portfolio = () => {
                 }}
               >
                 <DialogTitle sx={{ pb: 1 }}>
-                  Site To Be Deployed
+                  {selectedProject?.liveLink === "under development" 
+                    ? "Site Under Development" 
+                    : "Private Repository"}
                 </DialogTitle>
                 <DialogContent>
                   <Typography>
-                    This site has not yet been deployed. You can check it out on GitHub.
+                    {selectedProject?.liveLink === "under development" 
+                      ? "This site is currently under development and will be deployed soon. You can check out the source code on GitHub to see the progress."
+                      : "This project is part of a private repository or contains proprietary code that cannot be publicly shared. However, I'd be happy to discuss the technical details and implementation during an interview."}
                   </Typography>
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={() => setOpenDialog(false)} color="primary">
                     Close
                   </Button>
-                  {selectedProject && (
+                  {selectedProject && selectedProject.githubLink !== "not public" && selectedProject.liveLink === "under development" && (
                     <Button 
                       href={selectedProject.githubLink} 
                       target="_blank" 
