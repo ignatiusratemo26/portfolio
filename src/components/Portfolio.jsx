@@ -8,6 +8,8 @@ import la_crime_project from "../images/projects/crime_analysis_project.png";
 import sleep_scope_project from "../images/projects/sleepscope_project.png";
 import ncapc_project from "../images/projects/ncapc_project.png";
 import agrilink from "../images/projects/agrilink.png";
+import lukudiriba from "../images/projects/lukudiriba_project.png";
+import finance_dashboard from "../images/projects/finance-dashboard.png";
 const projects = [
     {
     title: "Xamara Technologies",
@@ -15,6 +17,20 @@ const projects = [
     githubLink: "not public",
     liveLink: "https://xamaratech.com/",
     image: xamara,
+  },
+      {
+    title: "Finance Dashboard",
+    description: "This is a platform that helps users get in depth insights on financial decisions made by pharma companies and also get to partner with them, through securing funding opportunities to conduct research",
+    githubLink: "not public",
+    liveLink: "https://finance-dashboard-one-phi.vercel.app/",
+    image: finance_dashboard,
+  },
+      {
+    title: "Luku Diriba Fashion",
+    description: "This is an e-commerce platform that enables Luku Diriba fashion company acquire a wider customer base and deliver its products to end users efficiently.",
+    githubLink: "not public",
+    liveLink: "https://luku-diriba-store.vercel.app/",
+    image: lukudiriba,
   },
   {
     title: "Agrilink",
