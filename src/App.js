@@ -5,7 +5,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import About from './components/About';
 import ClientSection from './components/ClientSection';
-import Newsletter from './components/Newsletter';
+
 import Portfolio from './components/Portfolio';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
